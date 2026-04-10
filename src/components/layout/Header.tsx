@@ -45,7 +45,6 @@ export function Header() {
               <Search className="h-4 w-4 text-muted-foreground opacity-50" />
             </div>
             <input
-              suppressHydrationWarning
               type="text"
               placeholder="Search..."
               value={searchTerm}
@@ -56,30 +55,35 @@ export function Header() {
 
           <div className="flex items-center shrink-0 space-x-1 border border-border/50 rounded-full p-1 bg-secondary/20 scale-90 sm:scale-100">
             <button
-              suppressHydrationWarning
               onClick={() => handleViewModeToggle('grid')}
-              className={`rounded-full p-1.5 transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'
-                }`}
+              className={`rounded-full p-1.5 transition-colors cursor-pointer ${
+                viewMode === 'grid' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               <LayoutGrid className="h-4 w-4" />
             </button>
             <button
-              suppressHydrationWarning
               onClick={() => handleViewModeToggle('list')}
-              className={`rounded-full p-1.5 transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'
-                }`}
+              className={`rounded-full p-1.5 transition-colors cursor-pointer ${
+                viewMode === 'list' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               <List className="h-4 w-4" />
             </button>
           </div>
 
           <button
-            suppressHydrationWarning
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="relative flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors overflow-hidden scale-90 sm:scale-100"
           >
-            <Sun className="absolute h-4 w-4 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
-            <Moon className="absolute h-4 w-4 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
+            {mounted ? (
+              <>
+                <Sun className={`absolute h-4 w-4 transition-all duration-300 ${theme === 'dark' ? 'rotate-0 scale-100' : 'rotate-90 scale-0'}`} />
+                <Moon className={`absolute h-4 w-4 transition-all duration-300 ${theme === 'dark' ? '-rotate-90 scale-0' : 'rotate-0 scale-100'}`} />
+              </>
+            ) : (
+              <div className="h-4 w-4 animate-pulse bg-muted rounded-full" />
+            )}
             <span className="sr-only">Toggle theme</span>
           </button>
         </div>

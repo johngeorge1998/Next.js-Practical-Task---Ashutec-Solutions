@@ -28,24 +28,22 @@ export function TypeSidebar() {
         </h2>
         <ul className="space-y-1.5 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible pb-2 md:pb-0">
           <li>
-            <button
-              suppressHydrationWarning
-              onClick={() => handleSelectType('all')}
-              className={cn(
-                'w-full text-left px-4 py-2 rounded-lg text-sm cursor-pointer font-medium transition-all whitespace-nowrap md:whitespace-normal',
-                selectedType === 'all'
-                  ? 'bg-primary text-primary-foreground shadow-sm'
-                  : 'text-foreground/70 hover:bg-secondary hover:text-foreground'
-              )}
-            >
-              All Pokémon
-            </button>
+              <button
+                onClick={() => handleSelectType('all')}
+                className={cn(
+                  'w-full text-left px-4 py-2 rounded-lg text-sm cursor-pointer font-medium transition-all whitespace-nowrap md:whitespace-normal',
+                  selectedType === 'all'
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-foreground/70 hover:bg-secondary hover:text-foreground'
+                )}
+              >
+                All Pokémon
+              </button>
           </li>
           
           {types.map((type) => (
             <li key={type.name}>
               <button
-                suppressHydrationWarning
                 onClick={() => handleSelectType(type.name)}
                 className={cn(
                   'w-full text-left px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-all capitalize whitespace-nowrap md:whitespace-normal',
