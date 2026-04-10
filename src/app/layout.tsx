@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
 
 export const metadata: Metadata = {
-  title: 'Pokémon Interface | Explore Pokedex',
+  title: 'PokéDex',
   description: 'Pokémon explorer web application built with Next.js.',
 };
 
