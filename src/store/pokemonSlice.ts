@@ -50,13 +50,27 @@ interface FetchPokemonArgs {
 export const fetchPokemon = createAsyncThunk(
   'pokemon/fetchPokemon',
   async ({ type, page, limit = 20 }: FetchPokemonArgs, { signal }) => {
+    const fetchFullDetails = async (url: string) => {
+      const res = await fetch(url, { signal });
+      if (!res.ok) return null;
+      return res.json();
+    };
+
     if (type === 'all') {
       const offset = page * limit;
       const response = await fetch(`${API_BASE_URL}/pokemon?limit=${limit}&offset=${offset}`, { signal });
       if (!response.ok) throw new Error('Failed to fetch pokemon');
       const data = await response.json();
+      
+      const detailedResults = await Promise.all(
+        data.results.map(async (p: PokemonBase) => {
+          const details = await fetchFullDetails(p.url);
+          return { ...p, ...details };
+        })
+      );
+
       return { 
-        results: data.results, 
+        results: detailedResults, 
         count: data.count, 
         isAllContent: true 
       };
@@ -65,9 +79,17 @@ export const fetchPokemon = createAsyncThunk(
       if (!response.ok) throw new Error('Failed to fetch pokemon by type');
       const data = await response.json();
       const mapped = data.pokemon.map((p: any) => p.pokemon);
+      
+      const detailedResults = await Promise.all(
+        mapped.map(async (p: PokemonBase) => {
+          const details = await fetchFullDetails(p.url);
+          return { ...p, ...details };
+        })
+      );
+
       return { 
-        results: mapped, 
-        count: mapped.length, 
+        results: detailedResults, 
+        count: detailedResults.length, 
         isAllContent: false 
       };
     }

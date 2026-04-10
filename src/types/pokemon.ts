@@ -1,6 +1,11 @@
 export interface PokemonBase {
   name: string;
   url: string;
+  id?: number;
+  height?: number;
+  weight?: number;
+  base_experience?: number;
+  types?: { type: { name: string } }[];
 }
 
 export interface PokemonListResponse {
