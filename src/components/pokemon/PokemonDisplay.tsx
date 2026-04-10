@@ -58,7 +58,7 @@ export function PokemonDisplay() {
   const filteredPokemon = useMemo(() => {
     if (!searchTerm) return pokemonList;
     const lowerSearch = searchTerm.toLowerCase();
-    return pokemonList.filter(p => p.name.toLowerCase().includes(lowerSearch));
+    return pokemonList.filter(p => p.name.toLowerCase().startsWith(lowerSearch));
   }, [pokemonList, searchTerm]);
 
   // Ensure scroll position resets on type or search change
