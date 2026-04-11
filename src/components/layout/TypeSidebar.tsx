@@ -33,7 +33,7 @@ export function TypeSidebar() {
             <button
               onClick={() => handleSelectType("all")}
               className={cn(
-                "w-full text-left px-4 py-2 rounded-lg text-sm cursor-pointer font-medium transition-all whitespace-nowrap md:whitespace-normal",
+                "w-full text-left px-4 py-2 rounded-lg text-sm cursor-pointer font-medium transition-all whitespace-nowrap md:whitespace-normal font-outfit",
                 selectedType === "all"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-foreground/70 hover:bg-secondary hover:text-foreground",
@@ -48,7 +48,7 @@ export function TypeSidebar() {
               <button
                 onClick={() => handleSelectType(type.name)}
                 className={cn(
-                  "w-full text-left px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-all capitalize whitespace-nowrap md:whitespace-normal",
+                  "w-full text-left px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-all capitalize whitespace-nowrap md:whitespace-normal font-outfit",
                   selectedType === type.name
                     ? "bg-primary text-primary-foreground shadow-sm"
                     : "text-foreground/70 hover:bg-secondary hover:text-foreground",
