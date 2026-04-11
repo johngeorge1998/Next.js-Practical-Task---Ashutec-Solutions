@@ -33,18 +33,21 @@ You'll need Node.js and a package manager like `pnpm` or `npm`.
 1. **Clone or download** the source code.
 
 2. **Install dependencies**:
+
    ```bash
    pnpm install
    ```
 
 3. **Set up environment variables**:
    Create a `.env` file in the root directory and add the keys provided in the email:
+
    ```env
    NEXT_PUBLIC_POKEMON_API_BASE_URL=...
    NEXT_PUBLIC_POKEMON_IMAGE_BASE_URL=...
    ```
 
 4. **Start the dev server**:
+
    ```bash
    pnpm run dev
    ```
@@ -54,6 +57,7 @@ You'll need Node.js and a package manager like `pnpm` or `npm`.
 ### Building for Production
 
 To create a production build:
+
 ```bash
 pnpm run build
 pnpm run start
@@ -73,4 +77,4 @@ pnpm run start
 
 ---
 
-*Pokémon data provided by [PokéAPI](https://pokeapi.co/).*
+_Pokémon data provided by [PokéAPI](https://pokeapi.co/)._

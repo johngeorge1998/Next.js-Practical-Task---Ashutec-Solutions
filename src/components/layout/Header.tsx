@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useTheme } from 'next-themes';
-import { Moon, Sun, Search, LayoutGrid, List } from 'lucide-react';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setSearchTerm, setViewMode } from '@/store/pokemonSlice';
-import { useEffect, useState } from 'react';
+import { useTheme } from "next-themes";
+import { Moon, Sun, Search, LayoutGrid, List } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setSearchTerm, setViewMode } from "@/store/pokemonSlice";
+import { useEffect, useState } from "react";
 
 export function Header() {
   const { theme, setTheme } = useTheme();
@@ -14,26 +14,24 @@ export function Header() {
 
   useEffect(() => {
     setMounted(true);
-    const savedMode = localStorage.getItem('pokemonViewMode') as 'grid' | 'list';
-    if (savedMode === 'grid' || savedMode === 'list') {
+    const savedMode = localStorage.getItem("pokemonViewMode") as
+      | "grid"
+      | "list";
+    if (savedMode === "grid" || savedMode === "list") {
       dispatch(setViewMode(savedMode));
     }
   }, [dispatch]);
 
-  const handleViewModeToggle = (mode: 'grid' | 'list') => {
+  const handleViewModeToggle = (mode: "grid" | "list") => {
     dispatch(setViewMode(mode));
-    localStorage.setItem('pokemonViewMode', mode);
+    localStorage.setItem("pokemonViewMode", mode);
   };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         <div className="flex items-center gap-1">
-          <img
-            src="/pokeball.svg"
-            alt="PokéDex"
-            className="w-7 h-7"
-          />
+          <img src="/pokeball.svg" alt="PokéDex" className="w-7 h-7" />
           <span className="font-outfit font-bold text-xl tracking-tight hidden md:inline-block pl-1">
             PokéDex
           </span>
@@ -55,17 +53,21 @@ export function Header() {
 
           <div className="flex items-center shrink-0 space-x-1 border border-border/50 rounded-full p-1 bg-secondary/20 scale-90 sm:scale-100">
             <button
-              onClick={() => handleViewModeToggle('grid')}
+              onClick={() => handleViewModeToggle("grid")}
               className={`rounded-full p-1.5 transition-colors cursor-pointer ${
-                viewMode === 'grid' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'
+                viewMode === "grid"
+                  ? "bg-background shadow-sm text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <LayoutGrid className="h-4 w-4" />
             </button>
             <button
-              onClick={() => handleViewModeToggle('list')}
+              onClick={() => handleViewModeToggle("list")}
               className={`rounded-full p-1.5 transition-colors cursor-pointer ${
-                viewMode === 'list' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'
+                viewMode === "list"
+                  ? "bg-background shadow-sm text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <List className="h-4 w-4" />
@@ -73,13 +75,17 @@ export function Header() {
           </div>
 
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="relative flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors overflow-hidden scale-90 sm:scale-100"
           >
             {mounted ? (
               <>
-                <Sun className={`absolute h-4 w-4 transition-all duration-300 ${theme === 'dark' ? 'rotate-0 scale-100' : 'rotate-90 scale-0'}`} />
-                <Moon className={`absolute h-4 w-4 transition-all duration-300 ${theme === 'dark' ? '-rotate-90 scale-0' : 'rotate-0 scale-100'}`} />
+                <Sun
+                  className={`absolute h-4 w-4 transition-all duration-300 ${theme === "dark" ? "rotate-0 scale-100" : "rotate-90 scale-0"}`}
+                />
+                <Moon
+                  className={`absolute h-4 w-4 transition-all duration-300 ${theme === "dark" ? "-rotate-90 scale-0" : "rotate-0 scale-100"}`}
+                />
               </>
             ) : (
               <div className="h-4 w-4 animate-pulse bg-muted rounded-full" />

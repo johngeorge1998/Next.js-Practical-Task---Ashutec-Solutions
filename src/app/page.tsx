@@ -1,5 +1,5 @@
-import { TypeSidebar } from '@/components/layout/TypeSidebar';
-import { PokemonDisplay } from '@/components/pokemon/PokemonDisplay';
+import { TypeSidebar } from "@/components/layout/TypeSidebar";
+import { PokemonDisplay } from "@/components/pokemon/PokemonDisplay";
 
 export default function Home() {
   return (

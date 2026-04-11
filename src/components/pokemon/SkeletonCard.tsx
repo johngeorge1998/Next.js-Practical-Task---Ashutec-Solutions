@@ -1,9 +1,9 @@
 interface SkeletonCardProps {
-  viewMode: 'grid' | 'list';
+  viewMode: "grid" | "list";
 }
 
 export function SkeletonCard({ viewMode }: SkeletonCardProps) {
-  if (viewMode === 'list') {
+  if (viewMode === "list") {
     return (
       <div className="flex items-center gap-4 p-4 rounded-xl border border-black/10 dark:border-white/10 bg-card shadow-sm">
         <div className="h-16 w-16 relative bg-black/10 dark:bg-white/10 rounded-lg shrink-0 animate-pulse" />
@@ -26,4 +26,3 @@ export function SkeletonCard({ viewMode }: SkeletonCardProps) {
     </div>
   );
 }
-
