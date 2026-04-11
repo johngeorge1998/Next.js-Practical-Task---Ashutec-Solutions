@@ -43,6 +43,7 @@ export function Header() {
               <Search className="h-4 w-4 text-muted-foreground opacity-50" />
             </div>
             <input
+              suppressHydrationWarning
               type="text"
               placeholder="Search..."
               value={searchTerm}
@@ -53,6 +54,7 @@ export function Header() {
 
           <div className="flex items-center shrink-0 space-x-1 border border-border/50 rounded-full p-1 bg-secondary/20 scale-90 sm:scale-100">
             <button
+              suppressHydrationWarning
               onClick={() => handleViewModeToggle("grid")}
               className={`rounded-full p-1.5 transition-colors cursor-pointer ${
                 viewMode === "grid"
@@ -63,6 +65,7 @@ export function Header() {
               <LayoutGrid className="h-4 w-4" />
             </button>
             <button
+              suppressHydrationWarning
               onClick={() => handleViewModeToggle("list")}
               className={`rounded-full p-1.5 transition-colors cursor-pointer ${
                 viewMode === "list"

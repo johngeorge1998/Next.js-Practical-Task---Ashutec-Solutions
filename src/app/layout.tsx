@@ -5,6 +5,7 @@ import { Providers } from "@/components/providers/Providers";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -30,6 +31,7 @@ export default function RootLayout({
         )}
       >
         <Providers>
+          <LoadingScreen />
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-1 flex overflow-hidden">{children}</main>
