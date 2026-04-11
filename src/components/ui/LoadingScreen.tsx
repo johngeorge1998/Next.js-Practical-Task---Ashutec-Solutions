@@ -29,7 +29,9 @@ export function LoadingScreen() {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background"
         >
-          <motion.div
+          <motion.img
+            src="/pokeball.svg"
+            alt="Loading..."
             animate={{
               rotate: 360,
               y: [0, -20, 0],
@@ -38,14 +40,8 @@ export function LoadingScreen() {
               rotate: { repeat: Infinity, duration: 2, ease: "linear" },
               y: { repeat: Infinity, duration: 1, ease: "easeInOut" },
             }}
-            className="relative w-24 h-24 rounded-full border-4 border-black overflow-hidden bg-white shadow-2xl"
-          >
-            <div className="absolute top-0 w-full h-1/2 bg-red-600 border-b-4 border-black" />
-
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border-4 border-black bg-white z-10 flex items-center justify-center shadow-md">
-              <div className="w-3 h-3 rounded-full border-2 border-black/20 bg-white animate-pulse" />
-            </div>
-          </motion.div>
+            className="w-20 h-20 drop-shadow-2xl"
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
